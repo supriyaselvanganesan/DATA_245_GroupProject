@@ -20,8 +20,6 @@ This repository includes the following models:
 - RBF-SVM
 - Multi-Kernel SVM
 - Generative Gaussian Mixture Classifier
-- Majority-class baseline
-- Conservation-based baseline
 
 ## Dataset and Features
 
