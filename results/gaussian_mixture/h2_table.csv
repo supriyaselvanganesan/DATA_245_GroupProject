@@ -1,0 +1,2 @@
+gain_B_over_A_standard,gain_B_over_A_gene_disjoint,ratio_new_over_standard,cutoff,share_of_bootstrap_with_positive_standard_gain,ratio_boot_2.5,ratio_boot_97.5,decision
+0.11271089137528989,0.11618459779479717,1.0308196162511127,0.5,1.0,0.9728311754396287,1.1151869293337877,REJECTED (new-gene gain is half of the standard gain or more)

@@ -1,0 +1,13 @@
+validation,feature_set,class,diag,tied
+gene_disjoint,A,benign,15,0
+gene_disjoint,A,pathogenic,15,0
+gene_disjoint,B,benign,15,0
+gene_disjoint,B,pathogenic,15,0
+gene_disjoint,D,benign,6,9
+gene_disjoint,D,pathogenic,13,2
+standard,A,benign,15,0
+standard,A,pathogenic,15,0
+standard,B,benign,15,0
+standard,B,pathogenic,15,0
+standard,D,benign,10,5
+standard,D,pathogenic,13,2
