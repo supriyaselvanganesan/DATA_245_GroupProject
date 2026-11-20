@@ -1,0 +1,97 @@
+{
+  "target": "label",
+  "group_column": "GeneSymbol",
+  "feature_groups": {
+    "conservation": [
+      "phyloP17way_primate",
+      "phastCons17way_primate",
+      "phyloP470way_mammalian",
+      "phastCons470way_mammalian",
+      "phyloP100way_vertebrate",
+      "phastCons100way_vertebrate"
+    ],
+    "population": [
+      "gnomADe_AF",
+      "gnomADe_AF_missing",
+      "gnomADe_AF_neglog10",
+      "gnomADg_AF",
+      "gnomADg_AF_missing",
+      "gnomADg_AF_neglog10",
+      "gnomAD_AF",
+      "gnomAD_AF_missing",
+      "gnomAD_AF_neglog10"
+    ],
+    "amino_acid": [
+      "AA_hydropathy_change",
+      "AA_hydropathy_abs_change",
+      "AA_mw_change",
+      "AA_mw_abs_change",
+      "AA_volume_change",
+      "AA_volume_abs_change",
+      "AA_polarity_change",
+      "AA_polarity_abs_change",
+      "AA_charge_change",
+      "AA_charge_abs_change",
+      "AA_aromatic_change",
+      "AA_aromatic_status_changed",
+      "BLOSUM62_score"
+    ]
+  },
+  "feature_sets": {
+    "A": [
+      "phyloP17way_primate",
+      "phastCons17way_primate",
+      "phyloP470way_mammalian",
+      "phastCons470way_mammalian",
+      "phyloP100way_vertebrate",
+      "phastCons100way_vertebrate"
+    ],
+    "B": [
+      "phyloP17way_primate",
+      "phastCons17way_primate",
+      "phyloP470way_mammalian",
+      "phastCons470way_mammalian",
+      "phyloP100way_vertebrate",
+      "phastCons100way_vertebrate",
+      "gnomADe_AF",
+      "gnomADe_AF_missing",
+      "gnomADe_AF_neglog10",
+      "gnomADg_AF",
+      "gnomADg_AF_missing",
+      "gnomADg_AF_neglog10",
+      "gnomAD_AF",
+      "gnomAD_AF_missing",
+      "gnomAD_AF_neglog10"
+    ],
+    "D": [
+      "phyloP17way_primate",
+      "phastCons17way_primate",
+      "phyloP470way_mammalian",
+      "phastCons470way_mammalian",
+      "phyloP100way_vertebrate",
+      "phastCons100way_vertebrate",
+      "gnomADe_AF",
+      "gnomADe_AF_missing",
+      "gnomADe_AF_neglog10",
+      "gnomADg_AF",
+      "gnomADg_AF_missing",
+      "gnomADg_AF_neglog10",
+      "gnomAD_AF",
+      "gnomAD_AF_missing",
+      "gnomAD_AF_neglog10",
+      "AA_hydropathy_change",
+      "AA_hydropathy_abs_change",
+      "AA_mw_change",
+      "AA_mw_abs_change",
+      "AA_volume_change",
+      "AA_volume_abs_change",
+      "AA_polarity_change",
+      "AA_polarity_abs_change",
+      "AA_charge_change",
+      "AA_charge_abs_change",
+      "AA_aromatic_change",
+      "AA_aromatic_status_changed",
+      "BLOSUM62_score"
+    ]
+  }
+}
