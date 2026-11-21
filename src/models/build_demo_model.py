@@ -21,7 +21,7 @@ def find_project_root():
 PROJECT_ROOT = find_project_root()
 DATA_DIR = PROJECT_ROOT / "data/processed"
 RESULTS_DIR = PROJECT_ROOT / "results" / "rbf_svm"
-OUTPUT_PATH = PROJECT_ROOT / "results" / "rbf_svm" / "rbf_svm_setD_gene_disjoint_r0_f0.joblib"
+OUTPUT_PATH = PROJECT_ROOT / "src" / "saved_models" / "rbf_svm_setD_gene_disjoint_r0_f0.joblib"
 THRESHOLD = 0.5
 SEED = 42
 

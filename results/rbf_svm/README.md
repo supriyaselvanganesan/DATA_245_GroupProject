@@ -1,10 +1,10 @@
 # RBF SVM contribution
 
-Rishitha Gogineni implemented the shared data preparation and the RBF SVM experiment. The three notebooks in `notebooks/` have matching Python files in `src/` and `src/models/`.
+Rishitha Gogineni implemented the shared data preparation and the RBF SVM experiment. The data-preparation and RBF experiment notebooks remain in `notebooks/` with matching Python files in `src/` and `src/models/`. The live demo notebook and saved model are in `src/saved_models/`; its matching Python export remains in `src/models/`.
 
 ## Quick demo
 
-From the repository root, open `notebooks/rbf_svm_demo.ipynb` and run its two code cells, or run `python src/models/rbf_svm_demo.py`. It loads `rbf_svm_setD_gene_disjoint_r0_f0.joblib` from this folder and scores three variants from genes held out in gene-disjoint repeat 0, fold 0. The saved model has already been fitted. The demo does not retrain it.
+From the repository root, open `src/saved_models/rbf_svm_demo.ipynb` and run its two code cells, or run `python src/models/rbf_svm_demo.py`. It loads `rbf_svm_setD_gene_disjoint_r0_f0.joblib` from `src/saved_models/` and scores three variants from genes held out in gene-disjoint repeat 0, fold 0. The saved model has already been fitted. The demo does not retrain it.
 
 The demo needs `data/processed/clinvar_expanded_model_features.csv` and `data/processed/fold_assignments.csv`. It uses NumPy, pandas, scikit-learn, and joblib. The model was saved with scikit-learn 1.9.1; use a matching version if model loading reports a compatibility warning. Do not use its predictions for clinical decisions.
 

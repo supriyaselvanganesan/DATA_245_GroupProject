@@ -1,11 +1,11 @@
-"""Python export of rbf_svm_demo.ipynb. Notebook outputs are omitted."""
+"""Python export of src/saved_models/rbf_svm_demo.ipynb. Notebook outputs are omitted."""
 
 # %% [markdown] cell 0
 # # RBF SVM Live Demo
 #
 # This notebook loads a saved Set D RBF SVM trained on gene-disjoint repeat 0, fold 0. It predicts three selected variants from different genes in that fold's held-out test set.
 #
-# The trained model is already included in `results/rbf_svm/`. The demo loads it directly and does not rerun model training or cross-validation. If you want to rebuild it, run `src/models/build_demo_model.py` first. This is an educational demo, not a clinical decision tool.
+# The trained model is already included in `src/saved_models/`. The demo loads it directly and does not rerun model training or cross-validation. If you want to rebuild it, run `src/models/build_demo_model.py` first. This is an educational demo, not a clinical decision tool.
 
 # %% code cell 1
 from pathlib import Path
@@ -21,7 +21,7 @@ def find_project_root():
 
 PROJECT_ROOT = find_project_root()
 DATA_DIR = PROJECT_ROOT / "data/processed"
-MODEL_PATH = PROJECT_ROOT / "results" / "rbf_svm" / "rbf_svm_setD_gene_disjoint_r0_f0.joblib"
+MODEL_PATH = PROJECT_ROOT / "src" / "saved_models" / "rbf_svm_setD_gene_disjoint_r0_f0.joblib"
 if not MODEL_PATH.exists():
     raise FileNotFoundError(f"Demo model not found at {MODEL_PATH}. Run build_demo_model.py once before presenting.")
 artifact = joblib.load(MODEL_PATH)
