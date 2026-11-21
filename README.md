@@ -2,38 +2,78 @@
 
 ## Overview
 
-This project applies classical machine learning methods to predict whether missense genetic variants are pathogenic or benign.
+This DATA 245 team project studies whether classical machine learning models can predict whether missense genetic variants are pathogenic or benign.
 
-The study uses a cleaned ClinVar-based dataset containing approximately 46,000 variants from around 2,100 genes. Multiple machine learning models are compared under standard validation and unseen-gene evaluation.
+The project uses a cleaned ClinVar-based dataset containing approximately 46,000 variants from about 2,100 genes. Several models are evaluated using standard validation and gene-disjoint validation.
 
-The main focus is determining whether these models can generalize to genes that were not included during training.
+The main goal is to determine whether the models can generalize to variants from genes that were not included during training.
 
-## Research Question
+## Research Questions
 
-How accurately can classical machine learning models predict missense variant pathogenicity for previously unseen genes, and which biological feature groups contribute most to model performance?
+1. How accurately can classical machine learning models predict missense variant pathogenicity?
+2. How does performance change when testing on completely unseen genes?
+3. Which biological feature groups contribute most to model performance?
+4. How do generative and discriminative models compare?
+5. Does standard validation provide overly optimistic performance estimates?
 
 ## Models
 
-This repository includes the following models:
+The project includes:
 
 - Regularized Logistic Regression
 - RBF-SVM
 - Multi-Kernel SVM
 - Generative Gaussian Mixture Classifier
+- Majority-class baseline
+- Conservation-only baseline
+- Conformal prediction analysis
+- Confidence calibration and abstention analysis
 
-## Dataset and Features
+The Gaussian mixture classifier includes:
 
-The dataset is based on ClinVar variant annotations and contains 28 biological features grouped into:
+- Expectation-Maximization implementation
+- Diagonal and tied covariance structures
+- BIC-based model selection
+- Multiple random starts
+- Bayesian classification
+- Stability and convergence analysis
+
+## Dataset
+
+The dataset is based on ClinVar variant annotations combined with biological feature information.
+
+It contains approximately:
+
+- 46,000 missense variants
+- 2,100 genes
+- 28 biological features
+
+The main feature groups are:
 
 - Conservation features
 - Population-frequency features
 - Amino-acid property features
 
+The processed data files are located in:
+
+    data/processed/
+
+Important files include:
+
+- `clinvar_expanded_model_features.csv`
+- `clinvar_expanded_project_dataset.csv`
+- `feature_config.json`
+- `fold_assignments.csv`
+
+## Feature Configurations
+
 The following feature configurations are evaluated:
 
 - **Set A:** Conservation features only
 - **Set B:** Conservation and population-frequency features
-- **Set D:** All available features
+- **Set D:** All available biological features
+
+These configurations measure the effect of adding feature groups step by step.
 
 ## Evaluation Strategy
 
@@ -45,28 +85,46 @@ The data is divided into folds while preserving class proportions. Variants from
 
 ### Gene-Disjoint Folds
 
-All variants from the same gene are kept in the same fold. This ensures that the model is evaluated on genes that were completely unseen during training.
+All variants from the same gene are assigned to the same fold. Therefore, the genes in the test fold are completely unseen during training.
 
-The experiments use five folds repeated three times. All preprocessing, feature scaling, hyperparameter tuning, and model selection are performed using training data only to prevent data leakage.
+The experiments use:
+
+- Five folds
+- Three repeated experiments
+- Fifteen test folds in total
+
+Preprocessing, imputation, scaling, feature selection, hyperparameter tuning, and model selection are performed using training data only.
 
 ## Evaluation Metrics
 
-The primary evaluation metrics are:
+The project reports:
 
 - ROC-AUC
 - PR-AUC
-- Matthews Correlation Coefficient (MCC)
-
-Accuracy is reported as a secondary metric.
+- Matthews Correlation Coefficient
+- Accuracy
+- Balanced accuracy
+- Precision for pathogenic variants
+- Recall or sensitivity for pathogenic variants
+- Specificity for benign variants
+- F1-score for pathogenic variants
+- Confusion-matrix counts
 
 Additional analyses include:
 
-- Performance drop on unseen genes
-- BIC-based model selection
-- Model convergence and stability
-- Runtime and computational behavior
+- Standard versus gene-disjoint performance
 - Feature-set comparisons
-- Fold-level performance variation
+- BIC-based component selection
+- Covariance-structure comparison
+- Model convergence
+- Stability across random starts
+- Runtime analysis
+- Large-gene sensitivity analysis
+- Gene-bootstrap confidence intervals
+- Corrected resampled t-tests
+- Calibration and abstention analysis
+- Conformal prediction analysis
+- Final comparison across team models
 
 ## Hypotheses
 
@@ -76,7 +134,34 @@ Adding population-frequency and amino-acid features improves PR-AUC compared wit
 
 ### H2: Potential Label Circularity
 
-The improvement from adding population-frequency features is smaller on unseen genes than on standard folds. This may indicate that part of the improvement is related to circularity in the labeling process.
+The improvement from adding population-frequency features is smaller on unseen genes than on standard folds.
+
+This examines whether part of the observed improvement may be related to information connected to the labeling process.
+
+## Repository Structure
+
+    DATA_245_GroupProject/
+    ├── data/
+    │   └── processed/
+    ├── notebooks/
+    │   ├── data_preparation.ipynb
+    │   ├── gaussian_mixture_analysis.ipynb
+    │   ├── logistic_regression_baselines.ipynb
+    │   ├── rbf_svm_demo.ipynb
+    │   ├── rbf_svm_rishitha.ipynb
+    │   ├── Sanjana_MultiKernelSVM_Conservation_Analysis.ipynb
+    │   └── Bhavya_Configuration_D_Conformal_Model.ipynb
+    ├── src/
+    │   ├── data_preparation.py
+    │   └── models/
+    ├── results/
+    │   ├── gaussian_mixture/
+    │   ├── logistic_regression/
+    │   ├── rbf_svm/
+    │   ├── MultiKernelSVM_Results/
+    │   └── final_comparison/
+    ├── README.md
+    └── requirements.txt
 
 ## Team Contributions
 
@@ -91,40 +176,99 @@ The improvement from adding population-frequency features is smaller on unseen g
 - Python
 - NumPy
 - pandas
-- scikit-learn
 - SciPy
+- scikit-learn
 - Matplotlib
+- joblib
+- threadpoolctl
 - Jupyter Notebook
 
 ## Installation
 
-Clone the repository and install the required dependencies:
+Clone the repository:
 
-```bash
-git clone <repository-url>
-cd DATA_245_GroupProject
-```
+    git clone https://github.com/supriyaselvanganesan/DATA_245_GroupProject.git
+    cd DATA_245_GroupProject
+
+Install the dependencies:
+
+    pip install -r requirements.txt
+
+If the requirements file is unavailable, install the main packages manually:
+
+    pip install numpy pandas scipy scikit-learn matplotlib joblib threadpoolctl jupyter
 
 ## Running the Project
 
-The model implementations are located in the `src/models/` directory.
+Start Jupyter Notebook:
 
-The analysis notebooks are located in the `notebooks/` directory.
+    jupyter notebook
 
-Model outputs, evaluation metrics, tables, and figures are stored in the `results/` directory. Results from each model are organized in separate folders for easy comparison.
+The analysis notebooks are located in:
+
+    notebooks/
+
+The model implementations are located in:
+
+    src/models/
+
+The generated tables, metrics, predictions, and figures are stored in:
+
+    results/
+
+## Results
+
+The final results compare the team models using:
+
+- Standard validation
+- Gene-disjoint validation
+- Multiple feature configurations
+- Multiple evaluation metrics
+- Fold-level performance variation
+
+The final comparison files are stored in:
+
+    results/final_comparison/
+
+Model-specific results are stored in:
+
+    results/gaussian_mixture/
+    results/logistic_regression/
+    results/rbf_svm/
+    results/MultiKernelSVM_Results/
 
 ## Project Goal
 
-This project does not focus only on achieving the highest classification score. Instead, it evaluates whether model performance remains reliable when predicting variants from genes that were not included during training.
+This project does not focus only on obtaining the highest classification score.
 
-The results help identify:
+Instead, it evaluates whether model performance remains reliable when predicting variants from genes that were not included during training.
+
+The analysis helps identify:
 
 - Which biological feature groups are most useful
-- How much performance decreases on unseen genes
-- Whether standard validation may overestimate real-world performance
-- Whether a generative model is a useful alternative to discriminative classifiers
-- How reliably classical machine learning models can support missense variant analysis
+- How performance changes on unseen genes
+- Whether standard validation may overestimate performance
+- How generative and discriminative models compare
+- Whether a Gaussian mixture classifier is useful for this task
+- How calibration and abstention affect model reliability
+- How classical machine learning methods can support missense variant analysis
+
+## Limitations
+
+The dataset is based on existing ClinVar annotations, so label quality depends on the available clinical evidence.
+
+The models are evaluated for research and educational purposes. The results should not be interpreted as clinical validation.
+
+Performance may vary across variant populations, genes, annotation sources, and feature availability.
+
+## Reproducibility
+
+The repository contains the notebooks, source files, processed data references, result tables, predictions, and generated figures used in the analysis.
+
+The experiments use fixed validation folds and recorded random seeds where applicable. Intermediate results are saved so completed model fits can be inspected without rerunning the full analysis.
 
 ## Important Note
 
-This project is intended for research and educational evaluation. The model predictions should not be used as a substitute for expert clinical or genetic interpretation.
+This project is intended for research and educational evaluation only.
+
+The model predictions should not be used as a substitute for expert clinical, genetic, or medical interpretation.
