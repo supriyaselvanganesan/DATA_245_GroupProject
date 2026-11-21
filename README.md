@@ -138,31 +138,6 @@ The improvement from adding population-frequency features is smaller on unseen g
 
 This examines whether part of the observed improvement may be related to information connected to the labeling process.
 
-## Repository Structure
-
-    DATA_245_GroupProject/
-    ├── data/
-    │   └── processed/
-    ├── notebooks/
-    │   ├── data_preparation.ipynb
-    │   ├── gaussian_mixture_analysis.ipynb
-    │   ├── logistic_regression_baselines.ipynb
-    │   ├── rbf_svm_demo.ipynb
-    │   ├── rbf_svm_rishitha.ipynb
-    │   ├── Sanjana_MultiKernelSVM_Conservation_Analysis.ipynb
-    │   └── Bhavya_Configuration_D_Conformal_Model.ipynb
-    ├── src/
-    │   ├── data_preparation.py
-    │   └── models/
-    ├── results/
-    │   ├── gaussian_mixture/
-    │   ├── logistic_regression/
-    │   ├── rbf_svm/
-    │   ├── MultiKernelSVM_Results/
-    │   └── final_comparison/
-    ├── README.md
-    └── requirements.txt
-
 ## Team Contributions
 
 - **Rishitha:** RBF-SVM modeling, hyperparameter tuning, runtime analysis, and memory analysis
@@ -190,11 +165,7 @@ Clone the repository:
     git clone https://github.com/supriyaselvanganesan/DATA_245_GroupProject.git
     cd DATA_245_GroupProject
 
-Install the dependencies:
-
-    pip install -r requirements.txt
-
-If the requirements file is unavailable, install the main packages manually:
+Install the main dependencies:
 
     pip install numpy pandas scipy scikit-learn matplotlib joblib threadpoolctl jupyter
 
